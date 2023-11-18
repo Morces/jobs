@@ -1,7 +1,9 @@
-import { Stack } from "expo-router";
+import { Stack, Link } from "expo-router";
 import { useCallback } from "react";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import Profile from "./profile/Profile";
+import Home from "./index";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -22,7 +24,12 @@ const Layout = () => {
     return null;
   }
 
-  return <Stack onLayout={onLayoutRootView} />;
+  return (
+    <Stack onLayout={onLayoutRootView}>
+      <Link to="home" component={Home} />
+      <Link to="profile" component={Profile} />
+    </Stack>
+  );
 };
 
 export default Layout;

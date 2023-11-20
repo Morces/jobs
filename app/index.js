@@ -14,6 +14,7 @@ const Home = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [open, setOpen] = useState(false);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.lightWhite }}>
       {open && <SideBar setOpen={setOpen} />}
@@ -23,9 +24,9 @@ const Home = () => {
           headerShadowVisible: false,
           headerLeft: () => (
             <ScreenHeaderBtn
-              iconUrl={icons.menu}
+              iconUrl={open ? icons.close : icons.menu}
               dimension="60%"
-              handlePress={() => setOpen(true)}
+              handlePress={() => setOpen((prevOpen) => !prevOpen)}
             />
           ),
           headerRight: () => (
